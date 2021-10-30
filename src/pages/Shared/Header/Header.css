@@ -1,0 +1,18 @@
+.navbar:hover .btn{
+    background-color: brown;
+    color:white;
+}
+.brand{
+    transition: all 2s;
+}
+.navbar:hover .brand{
+color:chocolate;
+
+transform: scale(1.3);
+}
+
+.link:hover{
+color: white;
+font-weight: 500;
+}
+

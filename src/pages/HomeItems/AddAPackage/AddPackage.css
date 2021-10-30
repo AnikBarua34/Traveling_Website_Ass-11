@@ -1,0 +1,14 @@
+.add-package-form{
+    margin:30px 150px;
+   
+}
+
+.add-package-form input,textarea {
+    display: block;
+    margin-top: 30px;
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 300px;
+
+}
