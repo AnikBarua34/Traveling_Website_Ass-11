@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Row } from 'react-bootstrap';
+import { Row, Spinner } from 'react-bootstrap';
 import Service from '../Service/Service';
 import { BsFillCalendarPlusFill } from "react-icons/bs";
+import useContextbase from '../../hooks/useContextBase';
 
 const Services = () => {
+    const {isLoading} =useContextbase();
+    if(isLoading){
+        <Spinner animation="border" variant="primary" />
+    }
+    
     const [services,setServices]=useState([]);
 
 
@@ -15,6 +21,7 @@ fetch('http://localhost:5000/packages')
     },[])
     return (
         <div id="services">
+            
             <div  className="mt-3 fw-bold text-light">
             <h2><BsFillCalendarPlusFill /> Main Offering Packages <BsFillCalendarPlusFill /></h2>
             <p>-------------------------------------------</p>

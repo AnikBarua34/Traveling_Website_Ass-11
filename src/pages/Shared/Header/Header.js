@@ -26,18 +26,18 @@ const Header = () => {
       
 
       {
-          user.email? <Nav.Link className="link" as={Link} to="/bookedplaces">Booked Places</Nav.Link>
+          user.email? <Nav.Link className="link" as={Link} to="/mybookings">My Bookings</Nav.Link>
           :
           <Navbar.Text></Navbar.Text>
       }
 
       {
-        user.email? <Nav.Link className="link" as={Link} to="/manageall">Manage All Orders</Nav.Link>
+        user.email? <Nav.Link className="link" as={Link} to="/manageall">All Bookings</Nav.Link>
         :
         <Navbar.Text></Navbar.Text>
       }
       {
-        user.email? <Nav.Link className="link" as={Link} to="/addpackage">Add a Package</Nav.Link>
+        user.email? <Nav.Link className="link" as={Link} to="/addpackage">Add Packages</Nav.Link>
         :
         <Navbar.Text></Navbar.Text>
       }

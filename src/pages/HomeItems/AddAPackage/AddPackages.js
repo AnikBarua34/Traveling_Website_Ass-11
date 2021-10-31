@@ -42,21 +42,20 @@ body: JSON.stringify(newPackage)
         <div>
             <div className="mt-5 pt-5">
 
-<h2 className="text-warning fw-bold mt-3 pt-3">Add a New Package in your Page</h2>
-                <form  className="add-package-form " onSubmit={handleAddUser}>
-
+            
+            <form  className="add-package-form" onSubmit={handleAddUser}>
+            <h2 className="text-warning fw-bold mt-3 pt-3">Add a New Package in your Page</h2>
             <input className="mx-auto" type="text" ref={nameRef} placeholder="Enter Package Name" />
             <input className="mx-auto" type="text" ref={priceRef} placeholder="Enter Price" />
             <input className="mx-auto" type="text" ref={durationRef} placeholder="Enter Duration" />
             <textarea className="mx-auto" type="text" ref={descriptionRef} placeholder="Enter Description" name="" id="" cols="15" rows="5"></textarea>
             <input className="mx-auto" type="text" ref={imgRef} placeholder="Enter any Image URL" />
             
-            <input className="mx-auto btn btn-warning fw-bold" type="submit" value="Add Package"/>
+            <input className="btn btn-warning fw-bold mx-auto" type="submit" value="Add Package"/>
 
                 </form>
             
-            </div>
-            
+        </div>
         </div>
     );
 };

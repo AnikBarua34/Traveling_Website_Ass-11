@@ -139,8 +139,6 @@ type="text"
 placeholder="Enter Your Email"
 />
 </Form.Group>
-
-
 </Row>
 <Row className="mb-3">
 <Form.Group className="mx-auto" as={Col} md="6" lg="6" controlId="validationCustom03">

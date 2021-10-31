@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useRef } from 'react';
 import { Col,Card, Row } from 'react-bootstrap';
-import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import useContextbase from '../hooks/useContextBase';
@@ -8,13 +7,48 @@ import './Booking.css';
 
 
 const Booking = () => {
-    // handle hook form 
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const { user } = useContextbase();
-    const onSubmit = data => {
-        console.log(data)
-    };
+    const {user}=useContextbase();
+
+
+    // Booking Section 
+    const packageNameRef = useRef();
+    const userNameRef = useRef();
+    const userEmailRef = useRef();
+    const addressRef = useRef();
+    const dateRef = useRef();
+    const ticketRef = useRef();
+   
+   
     
+
+    const handleBooking =e=>{
+const packageName = packageNameRef.current.value;
+const userName = userNameRef.current.value;
+const userEmail =  userEmailRef.current.value;
+const address =  addressRef.current.value;
+const date =  dateRef.current.value;
+const ticket =  ticketRef.current.value;
+
+e.preventDefault();
+
+const newPackage = {packageName,userName, userEmail,address,date,ticket}
+fetch('http://localhost:5000/allbookedpackage',{
+method: 'POST',
+headers: {
+    'content-type':'application/json'
+},
+body: JSON.stringify(newPackage)
+
+})
+.then(res=>res.json())
+.then(data=>{
+    if(data.insertedId){
+        alert('Package Booked Successfully !! Go to My Bookings to See This')
+        e.target.reset();
+    }
+})
+    }
+
     const {serviceId}=useParams();
     const [singleServices,setSingleServices]=useState([]);
 
@@ -38,14 +72,14 @@ const Booking = () => {
     
     return (
         // dynamic id and booking form 
-        <div className="booking-container mt-5 pt-5 m-3">
-            <Row xs={1} md={2} lg={2} className="g-5 p-5">
+        <div className="booking-container mt-3 pt-5">
+            <Row xs={1} md={2} lg={2} className="mt-5 pt-3">
 
                 {/* DYNAMIC ID  */}
 
             <Col className=" text-dark fw-bold">
       <Card className="" border="warning"> 
-        <Card.Img className="img mx-auto mt-3 p-1" style={{width:300}} variant="top" src={singleService?.img} />
+        <Card.Img className="img mx-auto mt-3 p-1" style={{width:200}} variant="top" src={singleService?.img} />
         <Card.Body>
           <Card.Title>Service Name : {singleService?.name}</Card.Title>
           <Card.Text>Price :BDT ৳ {singleService?.price}</Card.Text>
@@ -57,24 +91,20 @@ const Booking = () => {
      
                 {/* BOOKING FORM  */}
 
-            <Col className="">
-      <Card className="" border="warning"> 
-        
-        <Card.Body>
-        <form className="shipping-form" onSubmit={handleSubmit(onSubmit)}>
+            <Col>
+            <form  className="booking-form" onSubmit={handleBooking}>
+            <h2 className="text-warning fw-bold mt-3 pt-3">Book This Service</h2>
+            <input  type="text" defaultValue={singleService?.name} ref={packageNameRef}/>
+            <input  type="text" defaultValue={user.displayName} ref={userNameRef} placeholder="Enter Name "/>
+            <input  type="text" defaultValue={user.email} ref={userEmailRef} placeholder="Enter Email "/>
+            <input  type="text" required  ref={addressRef} placeholder="Enter Your Current Address"/>
+            <input  type="date" required  ref={dateRef} placeholder="Journey Date D.M.Y"/>
+            <input  type="text" required  ref={ticketRef} placeholder="How much ticket Do you want?"/>
+           
+            
+            <input className="btn btn-warning fw-bold mx-auto" type="submit" value="Book This Package"/>
 
-<input defaultValue={user.displayName} {...register("name")} />
-
-<input defaultValue={user.email} {...register("email", { required: true })} />
-{errors.email && <span className="error">This field is required</span>}
-<input placeholder="Address" defaultValue="" {...register("address")} />
-<input placeholder="City" defaultValue="" {...register("city")} />
-<input placeholder="Phone Number" defaultValue="" {...register("phone")} />
-
-<input className="btn btn-primary" type="submit" />
-</form>  
-        </Card.Body>
-      </Card>
+                </form>
     </Col> 
     </Row>
         </div>

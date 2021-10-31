@@ -12,7 +12,7 @@ import Footer from './pages/Footer/Footer';
 import FreeOffers from './pages/HomeItems/FreeOffers/FreeOffers';
 import AddPackages from './pages/HomeItems/AddAPackage/AddPackages';
 import BookedPlaces from './pages/HomeItems/BookedPlaces/BookedPlaces';
-import ManageAllOrders from './pages/HomeItems/ManageAllOrders/ManageAllOrders';
+import MyBookings from './pages/HomeItems/MyBookings/MyBookings';
 
 function App() {
   return (
@@ -38,12 +38,12 @@ function App() {
 <FreeOffers></FreeOffers>
 </PrivateRoute>
 
-<PrivateRoute path="/bookedplaces">
-<BookedPlaces></BookedPlaces>
+<PrivateRoute path="/mybookings">
+<MyBookings></MyBookings>
 </PrivateRoute>
 
 <PrivateRoute path="/manageall">
-<ManageAllOrders></ManageAllOrders>
+<BookedPlaces></BookedPlaces>
 </PrivateRoute>
 
 <PrivateRoute path="/addpackage">
