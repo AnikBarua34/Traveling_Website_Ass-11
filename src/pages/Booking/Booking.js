@@ -13,7 +13,7 @@ const Booking = () => {
     // Booking Section 
     const packageNameRef = useRef();
     const userNameRef = useRef();
-    const userEmailRef = useRef();
+    const emailRef = useRef();
     const addressRef = useRef();
     const dateRef = useRef();
     const ticketRef = useRef();
@@ -24,14 +24,14 @@ const Booking = () => {
     const handleBooking =e=>{
 const packageName = packageNameRef.current.value;
 const userName = userNameRef.current.value;
-const userEmail =  userEmailRef.current.value;
+const email =  emailRef.current.value;
 const address =  addressRef.current.value;
 const date =  dateRef.current.value;
 const ticket =  ticketRef.current.value;
 
 e.preventDefault();
 
-const newPackage = {packageName,userName, userEmail,address,date,ticket}
+const newPackage = {packageName,userName, email,address,date,ticket}
 fetch('http://localhost:5000/allbookedpackage',{
 method: 'POST',
 headers: {
@@ -43,7 +43,7 @@ body: JSON.stringify(newPackage)
 .then(res=>res.json())
 .then(data=>{
     if(data.insertedId){
-        alert('Package Booked Successfully !! Go to My Bookings to See This')
+        alert('Package Booked Successfully !! Go to  Bookings to See This')
         e.target.reset();
     }
 })
@@ -96,7 +96,7 @@ body: JSON.stringify(newPackage)
             <h2 className="text-warning fw-bold mt-3 pt-3">Book This Service</h2>
             <input  type="text" defaultValue={singleService?.name} ref={packageNameRef}/>
             <input  type="text" defaultValue={user.displayName} ref={userNameRef} placeholder="Enter Name "/>
-            <input  type="text" defaultValue={user.email} ref={userEmailRef} placeholder="Enter Email "/>
+            <input  type="text" defaultValue={user.email} ref={emailRef} placeholder="Enter Email "/>
             <input  type="text" required  ref={addressRef} placeholder="Enter Your Current Address"/>
             <input  type="date" required  ref={dateRef} placeholder="Journey Date D.M.Y"/>
             <input  type="text" required  ref={ticketRef} placeholder="How much ticket Do you want?"/>

@@ -19,15 +19,14 @@ const BookedPlaces = () => {
       const confirmDelete =window.confirm('Are You Sure to delete this Package?? ')
     if(confirmDelete){
       fetch(`http://localhost:5000/allbooked${id}`,{
-        method:'DELETE'
-        
-      })
+        method:'DELETE'})
+
       .then(res=>res.json())
       .then(data=>{
         if(data.deletedCount > 0){
-alert('Deleted Successfully !')
-const presentPackages = booked.filter(book=>book._id !==id)
-setBooked(presentPackages)
+      alert('Deleted Successfully !')
+      const presentPackages = booked.filter(book=>book._id !==id)
+      setBooked(presentPackages)
         }
       })
 
@@ -40,7 +39,7 @@ setBooked(presentPackages)
         <div className="mt-5 pt-5 text-white">
         
 
-            <h2>ALL BOOKED Places : {booked.length}</h2>
+            <h2 className="text-warning fw-bold m-2">ALL BOOKED Packages : {booked.length}</h2>
             
             {
                 booked.map(book=> 

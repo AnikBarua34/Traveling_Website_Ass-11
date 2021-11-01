@@ -56,7 +56,7 @@ const Header = () => {
       
       {
         user.email? <Navbar.Text>
-        {user.displayName}
+        {user.displayName || user.email}
         
         <Image className="ms-3" style={{width:30}} src={user.photoURL} roundedCircle />
         
