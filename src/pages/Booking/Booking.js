@@ -32,7 +32,7 @@ const ticket =  ticketRef.current.value;
 e.preventDefault();
 
 const newPackage = {packageName,userName, email,address,date,ticket}
-fetch('http://localhost:5000/allbookedpackage',{
+fetch('https://mighty-mesa-18218.herokuapp.com/allbookedpackage',{
 method: 'POST',
 headers: {
     'content-type':'application/json'
@@ -57,7 +57,7 @@ body: JSON.stringify(newPackage)
 
     // This is for a load data 
     useEffect(()=>{
-        fetch('http://localhost:5000/packages')
+        fetch('https://mighty-mesa-18218.herokuapp.com/packages')
         .then(res=> res.json())
         .then(data=> setSingleServices(data))
 
@@ -72,12 +72,12 @@ body: JSON.stringify(newPackage)
     
     return (
         // dynamic id and booking form 
-        <div className="booking-container mt-3 pt-5">
+        <div className="mx-auto mt-3 pt-5">
             <Row xs={1} md={2} lg={2} className="mt-5 pt-3">
 
                 {/* DYNAMIC ID  */}
 
-            <Col className=" text-dark fw-bold">
+            <Col className="text-dark fw-bold">
       <Card className="" border="warning"> 
         <Card.Img className="img mx-auto mt-3 p-1" style={{width:200}} variant="top" src={singleService?.img} />
         <Card.Body>

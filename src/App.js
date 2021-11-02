@@ -13,6 +13,7 @@ import FreeOffers from './pages/HomeItems/FreeOffers/FreeOffers';
 import AddPackages from './pages/HomeItems/AddAPackage/AddPackages';
 import BookedPlaces from './pages/HomeItems/BookedPlaces/BookedPlaces';
 import MyBookings from './pages/HomeItems/MyBookings/MyBookings';
+import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 
 function App() {
   return (

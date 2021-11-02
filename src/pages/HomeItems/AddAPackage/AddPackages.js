@@ -21,7 +21,7 @@ const img =imgRef.current.value;
 e.preventDefault();
 
 const newPackage = {name,price,duration,description,img}
-fetch('http://localhost:5000/newpackage',{
+fetch('https://mighty-mesa-18218.herokuapp.com/newpackage',{
 method: 'POST',
 headers: {
     'content-type':'application/json'

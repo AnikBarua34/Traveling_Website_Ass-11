@@ -1,8 +1,11 @@
 import React from 'react';
 import { useState,useEffect } from 'react';
 import useContextbase from '../../hooks/useContextBase';
-import { Table} from 'react-bootstrap';
+
 import { RiDeleteBin5Fill } from 'react-icons/ri';
+import './MyBookings.css';
+import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
+import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 
 const MyBookings = () => {
     const{user}=useContextbase();
@@ -11,7 +14,7 @@ const MyBookings = () => {
 
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/allbooked/${user.email}`)
+        fetch(`https://mighty-mesa-18218.herokuapp.com/allbooked/${user.email}`)
         .then(res=> res.json())
         .then(data=>setMyBooking(data))
         // .then(data=>console.log(data))
@@ -22,7 +25,7 @@ const MyBookings = () => {
         // confrim to delete 
         const confirmDelete =window.confirm('Are You Sure to delete this Package?? ')
       if(confirmDelete){
-        fetch(`http://localhost:5000/allbooked${id}`,{
+        fetch(`https://mighty-mesa-18218.herokuapp.com/allbooked${id}`,{
           method:'DELETE'
           
         })
@@ -46,33 +49,31 @@ const MyBookings = () => {
             
             {
                 mybooking.map(book=> 
-                    <Table key={book._id} className="table mx-auto" striped bordered hover variant="dark">
-  <thead>
-    <tr>
-      <th>Package Name </th>
-      <th>Username</th>
-      <th>User Address</th>
-      <th>Booking Date</th>
-      <th>Total Ticket</th>
+                    <Table key={book._id} className="bg-dark text-light mx-auto mt-3">
+                  <Thead className="thead">
+                    <Tr>
+                      <Th>Package Name</Th>
+                      <Th>User Name</Th>
+                      <Th>Address</Th>
+                      <Th>Date</Th>
+                      <Th>Total Ticket</Th>
+                      <Th>Delete Item</Th>
+                    </Tr>
+                  </Thead>
+                  <Tbody>
+                    <Tr>
+                      <Td> {book.packageName} </Td>
+                      <Td>{book.userName}</Td>
+                      <Td>{book.address}</Td>
+                      <Td>{book.date}</Td>
+                      <Td>{book.ticket}</Td>
+                      <Td><button className="btn btn-danger" onClick={()=>handleDelete(book._id)}><RiDeleteBin5Fill/>
       
-      
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>{book.packageName}</td>
-      <td>{book.userName}</td>
-      <td>{book.address}</td>
-      <td>{book.date}</td>
-      <td>{book.ticket}</td>
-      <td><button className="btn btn-danger" onClick={()=>handleDelete(book._id)}><RiDeleteBin5Fill/>
-      
-      </button></td>
-      
-    </tr>
-  </tbody>
-  
-</Table>
+      </button></Td>
+                    </Tr>
+                   
+                  </Tbody>
+                </Table>
                 )
             }
         </div>

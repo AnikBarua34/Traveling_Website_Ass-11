@@ -1,6 +1,6 @@
 # WELCOME TO MIND FRESHER PAGE !!
 
-Want to Fresh your Mind ? VIsit Here [LIVE SITE](https://github.com/facebook/create-react-app).
+Want to Fresh your Mind ? VIsit Here [LIVE SITE](https://mind-fresher-99961.web.app/).
 
 # What we used in our site
 
