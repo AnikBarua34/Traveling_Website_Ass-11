@@ -70,6 +70,7 @@ const handleGoogleLogin=()=>{
       .then(result=>{
         const user = result.user;
         console.log(user);
+        history.push(location.state?.from || "/home")
         setError('');
       })
       .catch(error=>{
@@ -99,6 +100,7 @@ const registerNewUSer=(email,password)=>{
       .then(result=>{
         const user= result.user
         console.log(user);
+        history.push(location.state?.from || "/home")
         setError('');
       })
       .catch(error =>{

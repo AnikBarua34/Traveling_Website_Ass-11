@@ -104,7 +104,7 @@ body: JSON.stringify(newPackage)
             
             <input className="btn btn-warning fw-bold mx-auto" type="submit" value="Book This Package"/>
 
-                </form>
+            </form>
     </Col> 
     </Row>
         </div>
